@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 /**
  * @author KBK
@@ -27,14 +29,17 @@ public class UI {
             labelDatabase, labelSci, labelEng;
     public JTable table;
     public JButton btnAdd, btnPrint, btnUpd, btnReset, btnDel, btnExit;
+    public JTextField txfId, txfName, txfSurname, txfAddress,
+            txfGender, txfMaths, txfGames, txfCompsci, txfMedia, txfArt,
+            txfDatabase, txfSci, txfEng;
     //Create a line separate around each panel
     
     public UI() {  
         f = new JFrame();
         initLabels();
-        initPanels();        
-        initBoundary();
-                
+        initPanels();     
+        initTextfields();
+        initBoundary();                
         f.add(panelTitle);
         f.add(panelOuterStudent);
         f.add(panelTable);
@@ -76,25 +81,55 @@ public class UI {
         labelEng = new JLabel("English");
     }
     
+    public void initTextfields() {
+        txfId = new JTextField();
+        txfName = new JTextField();
+        txfSurname = new JTextField();
+        txfAddress = new JTextField();
+        txfGender = new JTextField();
+        txfMaths = new JTextField();
+        txfGames = new JTextField();
+        txfCompsci = new JTextField();
+        txfMedia = new JTextField();
+        txfArt = new JTextField();
+        txfDatabase = new JTextField();
+        txfSci = new JTextField();
+        txfEng = new JTextField();
+    }
+    
     public void initBoundary() {
+        //Top Panel
         labelPanelTitle.setBounds(150, -70, 700, 200);
         labelPanelTitle.setFont(new Font("Arial", Font.BOLD, 30));
+        Border cyanline = BorderFactory.createLineBorder(Color.CYAN, 3);
+        panelTitle.setBorder(cyanline);
         panelTitle.setBounds(0, 0, 900, 60);
         panelTitle.add(labelPanelTitle);
         panelTitle.setBackground(Color.yellow);
         panelTitle.setLayout(null);
         
-        //Labels, txtfields, comboboxs
+        //Left panel
+        labelId.setBounds(30, 10, 80, 23);
+        txfId.setBounds(110, 10, 150, 23);
+        labelName.setBounds(30, 45, 80, 23);
+        txfName.setBounds(110, 45, 150, 23);
+        
+        panelOuterStudent.add(labelId);
+        panelOuterStudent.add(labelName);
+        panelOuterStudent.add(txfId);
+        panelOuterStudent.add(txfName);
+        
+        
         panelOuterStudent.setBounds(0, 60, 300, 420);
-        panelOuterStudent.setBackground(Color.black);
+        //panelOuterStudent.setBackground(Color.black);
         panelOuterStudent.setLayout(null);
         
-        //JTable
+        //Right panel
         panelTable.setBounds(300, 60, 585, 420);
         panelTable.setBackground(Color.orange);
         panelTable.setLayout(null);
         
-        //Buttons
+        //Bottom panel
         panelButton.setBounds(0, 480, 900, 80);
         panelButton.setBackground(Color.cyan);
         panelButton.setLayout(null);
