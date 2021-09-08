@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,12 +27,13 @@ public class UI {
     public JPanel panelTitle, panelOuterStudent, panelInnerStudent1, panelInnerStudent2, panelTable, panelButton, panelTest;
     public JLabel labelPanelTitle, labelId, labelName, labelSurname, labelAddress, 
             labelGender, labelMaths, labelGames, labelCompsci, labelMedia, labelArt, 
-            labelDatabase, labelSci, labelEng;
+            labelDatabase, labelSci, labelEng, labelMob;
     public JTable table;
     public JButton btnAdd, btnPrint, btnUpd, btnReset, btnDel, btnExit;
-    public JTextField txfId, txfName, txfSurname, txfAddress,
-            txfGender, txfMaths, txfGames, txfCompsci, txfMedia, txfArt,
-            txfDatabase, txfSci, txfEng;
+    public JTextField txfId, txfName, txfSurname, txfAddress, txfMob;
+    public JComboBox cbGender, cbMaths, cbGames, cbCompsci, cbMedia, cbArt, cbDatabase, cbSci, cbEng;
+    public String[] defaultSubject = {"Yes", "No", "Core Unit", "Completed"};
+    public String[] defaultGender = {"Male", "Female"};
     //Create a line separate around each panel
     
     public UI() {  
@@ -39,6 +41,7 @@ public class UI {
         initLabels();
         initPanels();     
         initTextfields();
+        initCombos();
         initBoundary();                
         f.add(panelTitle);
         f.add(panelOuterStudent);
@@ -69,6 +72,7 @@ public class UI {
         labelSurname = new JLabel("Surname:");
         labelAddress = new JLabel("Address:");
         labelGender = new JLabel("Gender:");
+        labelMob = new JLabel("Mobile:");
         //Inside panelInnerStudent1
         labelMaths = new JLabel("Maths");
         labelGames = new JLabel("Games");
@@ -86,15 +90,19 @@ public class UI {
         txfName = new JTextField();
         txfSurname = new JTextField();
         txfAddress = new JTextField();
-        txfGender = new JTextField();
-        txfMaths = new JTextField();
-        txfGames = new JTextField();
-        txfCompsci = new JTextField();
-        txfMedia = new JTextField();
-        txfArt = new JTextField();
-        txfDatabase = new JTextField();
-        txfSci = new JTextField();
-        txfEng = new JTextField();
+        txfMob = new JTextField();
+    }
+    
+    public void initCombos() {
+        cbGender = new JComboBox(defaultGender);
+        cbMaths = new JComboBox(defaultSubject);
+        cbGames = new JComboBox(defaultSubject);
+        cbCompsci = new JComboBox(defaultSubject);
+        cbMedia = new JComboBox(defaultSubject);
+        cbArt = new JComboBox(defaultSubject);
+        cbDatabase = new JComboBox(defaultSubject);
+        cbSci = new JComboBox(defaultSubject);
+        cbEng = new JComboBox(defaultSubject);        
     }
     
     public void initBoundary() {
@@ -109,16 +117,56 @@ public class UI {
         panelTitle.setLayout(null);
         
         //Left panel
-        labelId.setBounds(30, 10, 80, 23);
-        txfId.setBounds(110, 10, 150, 23);
-        labelName.setBounds(30, 45, 80, 23);
-        txfName.setBounds(110, 45, 150, 23);
+        labelId.setBounds(20, 10, 80, 23);
+        labelName.setBounds(20, 45, 80, 23);
+        labelSurname.setBounds(20, 80, 80, 23);
+        labelAddress.setBounds(20, 115, 80, 23);
+        labelGender.setBounds(20, 150, 80, 23);
+        labelMob.setBounds(20, 185, 80, 23); 
+        
+        //Need to set bounds for anything multicommented.
+        /*labelMaths.setBounds(20, 0, 0, 0);
+        labelGames.setBounds(20, 0, 0, 0);
+        labelCompsci.setBounds(20, 0, 0, 0);
+        labelMedia.setBounds(20, 0, 0, 0);
+        
+        labelArt.setBounds(80, 0, 0, 0);
+        labelDatabase.setBounds(80, 0, 0, 0);
+        labelSci.setBounds(80, 0, 0, 0);
+        labelEng.setBounds(80, 0, 0, 0);*/
+        
+        txfId.setBounds(90, 10, 200, 23);
+        txfName.setBounds(90, 45, 200, 23);
+        txfSurname.setBounds(90, 80, 200, 23);
+        txfAddress.setBounds(90, 115, 200, 23);        
+        cbGender.setBounds(90, 150, 80, 23);
+        txfMob.setBounds(90, 185, 200, 23);
+        
+        //ReAdjust
+        /*
+        cbMaths.setBounds(90, 150, 80, 23);
+        cbGames.setBounds(90, 150, 80, 23);
+        cbCompsci.setBounds(90, 150, 80, 23);
+        cbMedia.setBounds(90, 150, 80, 23);        
+        cbArt.setBounds(90, 150, 80, 23);
+        cbDatabase.setBounds(90, 150, 80, 23);
+        cbSci.setBounds(90, 150, 80, 23);
+        cbEng.setBounds(90, 150, 80, 23);
+        */
         
         panelOuterStudent.add(labelId);
         panelOuterStudent.add(labelName);
+        panelOuterStudent.add(labelSurname);
+        panelOuterStudent.add(labelAddress);
+        panelOuterStudent.add(labelGender);
+        panelOuterStudent.add(labelMob);
+        
         panelOuterStudent.add(txfId);
         panelOuterStudent.add(txfName);
-        
+        panelOuterStudent.add(txfSurname);
+        panelOuterStudent.add(txfAddress);       
+        panelOuterStudent.add(cbGender);       
+        panelOuterStudent.add(txfMob);       
         
         panelOuterStudent.setBounds(0, 60, 300, 420);
         //panelOuterStudent.setBackground(Color.black);
