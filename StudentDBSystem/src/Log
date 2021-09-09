@@ -5,9 +5,7 @@
 //#3 was done in the evening and then at fajr.
 3.1)Update the swing. - 08/9/21 
 3.2)Completed labels, textfields, comboboxes and setting their boundaries. 
-Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21
-
-] 
+Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21] 
 
 [To-do: 
 1)Add JTable to the right panel and include columns by labels existing.
