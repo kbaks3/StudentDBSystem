@@ -1,6 +1,8 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -34,6 +36,8 @@ public class UI {
     public JComboBox cbGender, cbMaths, cbGames, cbCompsci, cbMedia, cbArt, cbDatabase, cbSci, cbEng;
     public String[] defaultSubject = {"Yes", "No", "Core Unit", "Completed"};
     public String[] defaultGender = {"Male", "Female"};
+    public String[] tableCols = {"ID", "Stud-ID", "Fname", "Sname", "Address", 
+        "Gender", "Mob", "Maths", "Games", "CompSci", "Media", "Art"};
     //Create a line separate around each panel
     
     public UI() {  
@@ -42,7 +46,9 @@ public class UI {
         initPanels();     
         initTextfields();
         initCombos();
-        initBoundary();                
+        initButtons();
+        initBoundary();        
+        createTable();
         f.add(panelTitle);
         f.add(panelOuterStudent);
         f.add(panelTable);
@@ -67,22 +73,22 @@ public class UI {
     public void initLabels() {
         //Inside panelOuterStudent
         labelPanelTitle = new JLabel("Student Database Management Systems");
-        labelId = new JLabel("Student ID:");
-        labelName = new JLabel("First Name:");
-        labelSurname = new JLabel("Surname:");
+        labelId = new JLabel("Stud-ID:");
+        labelName = new JLabel("F-Name:");
+        labelSurname = new JLabel("S-name:");
         labelAddress = new JLabel("Address:");
         labelGender = new JLabel("Gender:");
         labelMob = new JLabel("Mobile:");
         //Inside panelInnerStudent1
         labelMaths = new JLabel("Maths");
         labelGames = new JLabel("Games");
-        labelCompsci = new JLabel("Comp Sci");
+        labelCompsci = new JLabel("CompSci");
         labelMedia = new JLabel("Media");        
         //Inside panelInnerStudent2
         labelArt = new JLabel("Art");    
-        labelDatabase = new JLabel("Database");    
-        labelSci = new JLabel("Science");    
-        labelEng = new JLabel("English");
+        labelDatabase = new JLabel("Datab");    
+        labelSci = new JLabel("Sci");    
+        labelEng = new JLabel("Eng");
     }
     
     public void initTextfields() {
@@ -105,6 +111,61 @@ public class UI {
         cbEng = new JComboBox(defaultSubject);        
     }
     
+    public void initButtons() {
+        btnAdd = new JButton("Add New");
+        btnPrint = new JButton("Print");
+        btnUpd = new JButton("Update");
+        btnReset = new JButton("Reset");
+        btnDel = new JButton("Delete");
+        btnExit = new JButton("Exit");
+        
+        //Bottom panel
+        btnAdd.setBounds(50, 10, 120, 60);
+        btnPrint.setBounds(180, 10, 120, 60);
+        btnUpd.setBounds(310, 10, 120, 60);
+        btnReset.setBounds(440, 10, 120, 60);
+        btnDel.setBounds(570, 10, 120, 60);
+        btnExit.setBounds(700, 10, 120, 60);
+        
+        btnAdd.setFont(new Font("", Font.BOLD, 20));
+        btnPrint.setFont(new Font("", Font.BOLD, 20));
+        btnUpd.setFont(new Font("", Font.BOLD, 20));
+        btnReset.setFont(new Font("", Font.BOLD, 20));
+        btnDel.setFont(new Font("", Font.BOLD, 20));
+        btnExit.setFont(new Font("", Font.BOLD, 20));
+        
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Student ID: " + txfId.getText());
+                System.out.println("First Name: " + txfName.getText());
+                System.out.println("Surname: " + txfSurname.getText());
+                System.out.println("Address: " + txfAddress.getText());
+                System.out.println("Gender: " + cbGender.getSelectedItem().toString());
+                System.out.println("Mobile: " + txfMob.getText());
+            }
+        });
+        
+        panelButton.add(btnAdd);
+        panelButton.add(btnPrint);
+        panelButton.add(btnUpd);
+        panelButton.add(btnReset);
+        panelButton.add(btnDel);
+        panelButton.add(btnExit);        
+        panelButton.setBounds(0, 480, 900, 80);
+//        panelButton.setBackground(Color.cyan);
+        panelButton.setLayout(null);
+    }
+    
+    public void createTable() {
+        
+        //Set JTable boundaries in here to keep it clean
+        //Right panel
+        panelTable.setBounds(300, 60, 585, 420);
+        panelTable.setBackground(Color.orange);
+        panelTable.setLayout(null);
+    }
+    
     public void initBoundary() {
         //Top Panel
         labelPanelTitle.setBounds(150, -70, 700, 200);
@@ -117,42 +178,40 @@ public class UI {
         panelTitle.setLayout(null);
         
         //Left panel
-        labelId.setBounds(20, 10, 80, 23);
-        labelName.setBounds(20, 45, 80, 23);
-        labelSurname.setBounds(20, 80, 80, 23);
-        labelAddress.setBounds(20, 115, 80, 23);
-        labelGender.setBounds(20, 150, 80, 23);
-        labelMob.setBounds(20, 185, 80, 23); 
+        labelId.setBounds(10, 30, 80, 23);
+        labelName.setBounds(10, 65, 80, 23);
+        labelSurname.setBounds(10, 100, 80, 23);
+        labelAddress.setBounds(10, 135, 80, 23);
+        labelGender.setBounds(10, 170, 80, 23);
+        labelMob.setBounds(10, 205, 80, 23); 
         
         //Need to set bounds for anything multicommented.
-        /*labelMaths.setBounds(20, 0, 0, 0);
-        labelGames.setBounds(20, 0, 0, 0);
-        labelCompsci.setBounds(20, 0, 0, 0);
-        labelMedia.setBounds(20, 0, 0, 0);
+        labelMaths.setBounds(10, 240, 50, 23);
+        labelGames.setBounds(10, 275, 50, 23);
+        labelCompsci.setBounds(10, 310, 70, 23);
+        labelMedia.setBounds(10, 345, 50, 23);
         
-        labelArt.setBounds(80, 0, 0, 0);
-        labelDatabase.setBounds(80, 0, 0, 0);
-        labelSci.setBounds(80, 0, 0, 0);
-        labelEng.setBounds(80, 0, 0, 0);*/
+        labelArt.setBounds(165, 240, 50, 23);
+        labelDatabase.setBounds(165, 275, 70, 23);
+        labelSci.setBounds(165, 310, 50, 23);
+        labelEng.setBounds(165, 345, 50, 23);
         
-        txfId.setBounds(90, 10, 200, 23);
-        txfName.setBounds(90, 45, 200, 23);
-        txfSurname.setBounds(90, 80, 200, 23);
-        txfAddress.setBounds(90, 115, 200, 23);        
-        cbGender.setBounds(90, 150, 80, 23);
-        txfMob.setBounds(90, 185, 200, 23);
+        txfId.setBounds(70, 30, 200, 23);
+        txfName.setBounds(70, 65, 200, 23);
+        txfSurname.setBounds(70, 100, 200, 23);
+        txfAddress.setBounds(70, 135, 200, 23);        
+        cbGender.setBounds(70, 170, 80, 23);
+        txfMob.setBounds(70, 205, 200, 23); 
         
-        //ReAdjust
-        /*
-        cbMaths.setBounds(90, 150, 80, 23);
-        cbGames.setBounds(90, 150, 80, 23);
-        cbCompsci.setBounds(90, 150, 80, 23);
-        cbMedia.setBounds(90, 150, 80, 23);        
-        cbArt.setBounds(90, 150, 80, 23);
-        cbDatabase.setBounds(90, 150, 80, 23);
-        cbSci.setBounds(90, 150, 80, 23);
-        cbEng.setBounds(90, 150, 80, 23);
-        */
+        cbMaths.setBounds(70, 240, 80, 23);
+        cbGames.setBounds(70, 275, 80, 23);
+        cbCompsci.setBounds(70, 310, 80, 23);
+        cbMedia.setBounds(70, 345, 80, 23);   
+        //On the right of ^^
+        cbArt.setBounds(205, 240, 80, 23);
+        cbDatabase.setBounds(205, 275, 80, 23);
+        cbSci.setBounds(205, 310, 80, 23);
+        cbEng.setBounds(205, 345, 80, 23);
         
         panelOuterStudent.add(labelId);
         panelOuterStudent.add(labelName);
@@ -160,27 +219,32 @@ public class UI {
         panelOuterStudent.add(labelAddress);
         panelOuterStudent.add(labelGender);
         panelOuterStudent.add(labelMob);
-        
+        panelOuterStudent.add(labelMaths);
+        panelOuterStudent.add(labelGames);
+        panelOuterStudent.add(labelCompsci);
+        panelOuterStudent.add(labelMedia);     
+        panelOuterStudent.add(labelArt);
+        panelOuterStudent.add(labelDatabase);
+        panelOuterStudent.add(labelSci);
+        panelOuterStudent.add(labelEng);
         panelOuterStudent.add(txfId);
         panelOuterStudent.add(txfName);
         panelOuterStudent.add(txfSurname);
         panelOuterStudent.add(txfAddress);       
         panelOuterStudent.add(cbGender);       
-        panelOuterStudent.add(txfMob);       
-        
+        panelOuterStudent.add(txfMob);   
+        panelOuterStudent.add(cbMaths);
+        panelOuterStudent.add(cbGames);       
+        panelOuterStudent.add(cbCompsci);       
+        panelOuterStudent.add(cbMedia);           
+        panelOuterStudent.add(cbArt);
+        panelOuterStudent.add(cbDatabase);       
+        panelOuterStudent.add(cbSci);       
+        panelOuterStudent.add(cbEng);  
         panelOuterStudent.setBounds(0, 60, 300, 420);
-        //panelOuterStudent.setBackground(Color.black);
+//        panelOuterStudent.setBackground(Color.black);
         panelOuterStudent.setLayout(null);
-        
-        //Right panel
-        panelTable.setBounds(300, 60, 585, 420);
-        panelTable.setBackground(Color.orange);
-        panelTable.setLayout(null);
-        
-        //Bottom panel
-        panelButton.setBounds(0, 480, 900, 80);
-        panelButton.setBackground(Color.cyan);
-        panelButton.setLayout(null);
     }
+    
     
 }
