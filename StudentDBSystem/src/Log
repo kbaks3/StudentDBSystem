@@ -1,13 +1,18 @@
 [Log: 
-1)Added basics layout for panels and prepared for next push. - 07/9/21
-2)Redesigned layout designs, implemented some labels and some text fields. 
-Also added some new comments and new methods to initialise textfields. - 08/9/21] 
+1)Added basics layout for panels and prepared for next push. - 06/9/21
+2)Redesigned layout designs, implemented some labels and some text fields. Also added some new comments and new methods to initialise textfields. - 07/9/21
+
+//#3 was done in the evening and then at fajr.
+3.1)Update the swing. - 08/9/21 
+3.2)Completed labels, textfields, comboboxes and setting their boundaries. 
+Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21
+
+] 
 
 [To-do: 
-1)Finish up adding all textfields and labels.
-2)Change JTextfield for subjects (maths, eng, sci etc) to combobox.
-3)Add JTable to the right panel and include columns by labels existing.
-4) Add JButtons but no actionlisteners.] 
+1)Add JTable to the right panel and include columns by labels existing.
+2)Add actionlistener to all buttons.
+3)Create database and connect the database to the textfields to store, and once you click "add new" it will store it into the database and vice versa with the other buttons.] 
 
 [Next Project: 
 1) Google it.] 
