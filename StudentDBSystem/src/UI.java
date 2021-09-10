@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -24,19 +25,22 @@ import javax.swing.border.Border;
     *4th panel: full of jbutton: "Add, print, update, reset, delete, exit".
     */
 
-public class UI {
+public final class UI {
     public JFrame f;
     public JPanel panelTitle, panelOuterStudent, panelInnerStudent1, panelInnerStudent2, panelTable, panelButton, panelTest;
     public JLabel labelPanelTitle, labelId, labelName, labelSurname, labelAddress, 
             labelGender, labelMaths, labelGames, labelCompsci, labelMedia, labelArt, 
             labelDatabase, labelSci, labelEng, labelMob;
-    public JTable table;
     public JButton btnAdd, btnPrint, btnUpd, btnReset, btnDel, btnExit;
     public JTextField txfId, txfName, txfSurname, txfAddress, txfMob;
     public JComboBox cbGender, cbMaths, cbGames, cbCompsci, cbMedia, cbArt, cbDatabase, cbSci, cbEng;
     public String[] defaultSubject = {"Yes", "No", "Core Unit", "Completed"};
     public String[] defaultGender = {"Male", "Female"};
-    public String[] tableCols = {"ID", "Stud-ID", "Fname", "Sname", "Address", 
+    public JTable table;
+    private JScrollPane sp;
+    public String data[][] = {{"1", "1542372", "Kamal", "Bakar", "114 Blackpool lane",
+        "Male", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"}};
+    public String[] cols = {"ID", "Stud-ID", "Fname", "Sname", "Address", 
         "Gender", "Mob", "Maths", "Games", "CompSci", "Media", "Art"};
     //Create a line separate around each panel
     
@@ -55,6 +59,7 @@ public class UI {
         f.add(panelButton);
         f.add(panelTest);
         f.setSize(900, 600);
+        f.setResizable(true);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -152,16 +157,22 @@ public class UI {
         panelButton.add(btnReset);
         panelButton.add(btnDel);
         panelButton.add(btnExit);        
-        panelButton.setBounds(0, 480, 900, 80);
-//        panelButton.setBackground(Color.cyan);
+        panelButton.setBounds(0, 480, 890, 80);
+        panelButton.setBackground(Color.cyan);
         panelButton.setLayout(null);
     }
     
     public void createTable() {
-        
         //Set JTable boundaries in here to keep it clean
         //Right panel
-        panelTable.setBounds(300, 60, 585, 420);
+        table = new JTable(data, cols);
+        table.setBounds(20, 20, 500, 300);       
+        
+        sp = new JScrollPane(table);
+        //sp.setViewportView(table);
+        sp.setBounds(20, 20, 550, 300);   
+        panelTable.add(sp);
+        panelTable.setBounds(300, 60, 583, 420);
         panelTable.setBackground(Color.orange);
         panelTable.setLayout(null);
     }
@@ -172,9 +183,9 @@ public class UI {
         labelPanelTitle.setFont(new Font("Arial", Font.BOLD, 30));
         Border cyanline = BorderFactory.createLineBorder(Color.CYAN, 3);
         panelTitle.setBorder(cyanline);
-        panelTitle.setBounds(0, 0, 900, 60);
+        panelTitle.setBounds(0, 0, 884, 60);
         panelTitle.add(labelPanelTitle);
-        panelTitle.setBackground(Color.yellow);
+        //panelTitle.setBackground(Color.yellow);
         panelTitle.setLayout(null);
         
         //Left panel
