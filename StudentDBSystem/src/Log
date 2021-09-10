@@ -5,9 +5,11 @@
 //#3 was done in the evening and then at fajr.
 3.1)Update the swing. - 08/9/21 
 3.2)Completed labels, textfields, comboboxes and setting their boundaries. 
-Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21] 
+Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21
+4)Added JTable however it doesn't show column data.] 
 
-[To-do: 
+[To-do:
+[URGENT: refix panel layout so it's more fluid when resizing the application] 
 1)Add JTable to the right panel and include columns by labels existing.
 2)Add actionlistener to all buttons.
 3)Create database and connect the database to the textfields to store, and once you click "add new" it will store it into the database and vice versa with the other buttons.] 
