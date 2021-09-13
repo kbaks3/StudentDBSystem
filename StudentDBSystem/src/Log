@@ -4,9 +4,12 @@
 
 //#3 was done in the evening and then at fajr.
 3.1)Update the swing. - 08/9/21 
-3.2)Completed labels, textfields, comboboxes and setting their boundaries. 
-Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21
-4)Added JTable however it doesn't show column data.] 
+3.2)Completed labels, textfields, comboboxes and setting their boundaries. - 09/9/21
+3.3)Added buttons however it's not all interactive yet (only Add works). Changed some textfields to cb. - 09/9/21
+4)Added JTable however it doesn't show column data.
+5.1)Redesign layouts, added border layouts to the top bottom and jtable panels, so whenever it's resized, it stays in formation. - 09/9/21
+5.2)Still need to fix the panel for students. I've placed an outer BorderLayout with an inside panel with BoxLayout (still errors). - 09/9/21
+] 
 
 [To-do:
 [URGENT: refix panel layout so it's more fluid when resizing the application] 
